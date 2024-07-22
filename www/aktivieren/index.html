@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abitur 2025</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../app/javascript/cookies.js"></script>
+
+    <script>
+        Math.clamp = function(x, min, max) {
+    return Math.min(Math.max(x, min), max);
+};
+    </script>
+</head>
+<body>
+
+
+    <script>
+
+        var freischaltungscode = "";
+        var code = "";
+        var username = "";
+        var pass = "";
+        var token = getCookie("token");
+        var newpass = "";
+
+        function load() {
+
+            $.ajax({
+                type: "POST",
+                url: "../app/php/freischaltcodeCheck.php", // Hier den Pfad zu deinem PHP-Skript angeben
+                data: { token: token },
+                success: function(response) {
+
+
+                    response = response.split("✩");
+
+                    if ( response[0] == "true" ) {
+
+                        document.getElementById("vorname").textContent = response[1];
+                    } else {
+                        window.location.href = "../app";
+
+                    }
+
+                    console.log(response);
+                    
+                },
+                error: function(error) {
+                    
+                    console.log(error);
+                }
+            });
+        }
+
+        function updatePass() {
+
+            newpass = document.getElementById("code").value;
+            hash = getCookie("token");
+            document.getElementById("form1button").textContent = "Lädt";
+
+            $.ajax({
+                type: "POST",
+                url: "../app/php/updatePassAndConfirmUnlock.php", // Hier den Pfad zu deinem PHP-Skript angeben
+                data: { token: token, newpass: newpass },
+                success: function(response) {
+
+                    response = response.split("✩");
+
+
+                    console.log(response);
+
+                    if (response[0] == "true") {
+                        username = response[1];
+                        pass = response[2];
+                        show2();
+                        document.getElementById("readUsername").value = username;
+                        document.getElementById("readPassword").value = pass;
+                    } else {
+
+                        if (response[1] == "Fehler") {
+                            alert("Ungültiger Token");
+                            window.location.href = "../";
+
+                        } else {
+                            alert(response[1]);
+                            document.getElementById("form1button").textContent = "Fortfahren";
+
+                        }
+                    }
+
+
+                    
+                },
+                error: function(error) {
+                    
+                    console.log(error);
+                }
+            });
+        }
+
+        function confirmPass() {
+
+            pass = document.getElementById("pass").value;
+
+            document.getElementById("form2button").textContent = "Lädt";
+
+            $.ajax({
+                type: "POST",
+                url: "../app/php/updatePassAndConfirmUnlock.php", // Hier den Pfad zu deinem PHP-Skript angeben
+                data: { code: code, username: username, newpass: pass },
+                success: function(response) {
+
+                    console.log(response);
+
+
+                    if (response == "true") {
+                        show3();
+                        document.getElementById("readUsername").value = username;
+                        document.getElementById("readPassword").value = pass;
+
+                    } else {
+                        alert("Ungültiges Passwort");
+                        document.getElementById("form1button").textContent = "Fortfahren";
+                    }
+                    
+                },
+                error: function(error) {
+                    
+                    console.log(error);
+                }
+            });
+
+
+
+        }
+
+        function continueToApp() {
+            if (confirm("Hast du dir dein neues Passwort gemerkt?") == true) {
+                window.location.href = "../app";
+            }
+        }
+
+
+        function show2() {
+            document.getElementById("FORM1").style.transform = "scale(.85)";
+            document.getElementById("FORM1").style.opacity = 0;
+
+            document.getElementById("FORM2").style.display = "block";
+            document.getElementById("FORM2").style.transition = "all 0s linear";
+            document.getElementById("FORM2").style.opacity = 0;
+            document.getElementById("FORM2").style.transform = "scale(.85)";
+
+
+            setTimeout(function(){
+                document.getElementById("FORM1").style.display = "none";
+                document.getElementById("FORM2").style.transform = "scale(1)";
+                document.getElementById("FORM2").style.opacity = 1;
+                document.getElementById("FORM2").style.transition = "all .5s ease-in-out";
+            }, 300);
+        }
+
+        function already() {
+
+            if (confirm("Hast du bereits dieses Formular ausgefüllt? Wenn ja, wirst du zur App weitergeleitet.") == true) {
+                window.location.href = "../app";
+            }
+        }
+    </script>
+
+<input id="fake_user_name" name="fake_user[name]" style="position:absolute; top:-100px;" type="text" value="Safari Autofill Me">
+
+
+<div id="navbar" class="navbar">
+    <h3 onclick='window.location.href = "../";'>
+        Abizeitungsapp
+
+    </h3>
+
+    
+    <button onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'});">Aktivieren</button>
+</div>
+
+<div style="height: 20svh;"></div>
+
+
+
+
+
+
+<div class="form">
+
+    <div style="display: flex;">
+        <div style="flex-grow: 1;">
+            <h3>Herzlich Willkommen</h3>
+            <div style="height: .5rem;"></div>
+            <h1 style=" text-align: left;" id="vorname"></h1>
+            <div style="height: 4rem;"></div>
+        </div>
+        <div style="font-size: 50px; vertical-align: middle; height: 50px; margin-top: 15px;">
+            👋
+        </div>
+    </div>
+
+
+    <div class="arrows">
+        <div style="height: 10svh;"></div>
+
+        <div class="point" style="animation-delay: -.5s;"></div>
+        <div class="point" style="animation-delay: -.4s;"></div>
+        <div class="point" style="animation-delay: -.3s;"></div>
+        <div class="point" style="animation-delay: -.2s;"></div>
+        <div class="point" style="animation-delay: -.1s;"></div>
+    
+        <div style="height: 10svh;"></div>
+    </div>
+
+
+
+
+
+    <div class="form2" id="FORM1">
+        <!-- <div style="height: 1rem;"></div> -->
+
+        <h3>🔑 Lege hier das Passwort für dein Konto bei der Abizeitungsapp fest.</h3>
+        <div style="height: 2rem;"></div>
+        <h3 style="font-family: PolySans Neutral;">Mit deinem neuem Passwort kannst du dich dann gleich anmelden.</h3>
+        <div style="height: 2rem;"></div>
+        
+        <!-- <input id="user" placeholder="Passwort Festlegen" autocomplete="off" style="max-width: 1px;"> -->
+
+        <input id="code" md-maxlength="30" name="name" ng-model="name" autocomplete="nope" placeholder="Passwort Festlegen"/>
+
+
+        <div style="height: 2rem;"></div>
+        <button class="whiteButton" id="form1button" onclick=" updatePass()">Fortfahren</button>
+        <div style="height: 2rem;"></div>
+        <button id="form1button" onclick=" already()" class="whiteButton secondary">Konto bereits freigeschaltet</button>
+    </div>
+
+    <div class="form2" id="FORM2" style="display: none; opacity: 0; transform: scale(.85);">
+        <h3>🔒 Passwort Gespeichert</h3>
+        <div style="height: 1rem;"></div>
+        <h3 style="font-family: PolySans Neutral;">Das hier sind nun deine Anmeldedaten für die Abizeitungsapp:</h3>
+        <div style="height: 2rem;"></div>
+        <input readonly placeholder="Benutzername" value="" id="readUsername">
+        <div style="height: 1rem;"></div>
+        <input readonly placeholder="Passwort" value="" id="readPassword">
+        <div style="height: 2rem;"></div>
+        <h3>Anmeldedaten unbedingt merken!</h3>
+        <div style="height: 2rem;"></div>
+        <button class="whiteButton" id="form3button" onclick="continueToApp()">Weiter zur App</button>
+    </div>
+
+</div>
+
+<div style="height: 12.5svh;"></div>
+
+<script>
+    load();
+</script>
+
+</body>
+</html>

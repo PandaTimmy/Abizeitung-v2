@@ -1,0 +1,504 @@
+@font-face {
+    font-family: "PolySans Bulky";
+    src: url('fonts/PolySans\ Bulky.ttf');
+}
+@font-face {
+    font-family: "PolySans Median";
+    src: url('fonts/PolySans\ Median.ttf');
+}
+@font-face {
+    font-family: "PolySans Neutral";
+    src: url('fonts/PolySans\ Neutral.ttf');
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    overflow: auto; /* Zeigt die Scrollleiste nur an, wenn benötigt */
+    -ms-overflow-style: none; /* IE und Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari und Opera */
+}
+
+
+h1 {
+    color: white;
+    font-family: "PolySans Bulky"; 
+    font-size: calc(56px + 3vw - 11.7px);
+    margin: 0;
+    text-align: center;
+    line-height: calc(44px + 3vw  - 11.7px);
+    font-weight: normal;
+}
+
+h2 {
+    color: white;
+    font-family: "PolySans Median";
+    font-size: calc(52px + 3vw - 11.7px);
+    margin: 0;
+    text-align: center;
+    line-height: calc(44px + 3vw - 11.7px);
+    font-weight: normal;
+}
+
+h3 {
+    color: white;
+    font-family: "PolySans Bulky";
+    font-size: calc(18px + 1vw - 3.9px);
+    font-weight:normal;
+    margin: 0;
+}
+
+h4 {
+    color: white;
+    font-family: "PolySans Neutral";
+    font-size: calc(18px + 1vw);
+    font-weight:normal;
+    margin: 0;
+}
+
+h5 {
+    color: #808080;
+    font-family: "PolySans Neutral";
+    font-size: calc(18px + 1vw);
+    font-weight:normal;
+    margin: 0;
+    font-size: calc(24px + 1vw);
+
+}
+
+p {
+    color: white;
+    font-family: "PolySans Neutral";
+    font-size: calc(12px + .5vw);
+    font-weight:normal;
+    margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    width: calc( 100% );
+    display: flex;
+    padding: 2vw 5vw 18px 5vw;
+    padding-top: calc(14px + .5vw);
+    padding-bottom: calc(14px + .5vw);
+    box-sizing: border-box;
+    justify-content: space-between;
+    z-index: 999;
+    top: 0;
+
+    button {
+        font-size: 18px;
+        font-family: "PolySans Bulky";
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 3px 14px 4px 14px;
+        border-radius: 10px;
+        margin-top: -3px;
+    }
+}
+
+.titelbildcontainer {
+    overflow: hidden;
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+
+    .titelkachel {
+        height: 100vh;
+
+        margin-top: 50px;
+        background-image: url("abstract-backdrop-with-vibrant-multicolored-shapes-patterns-generated-by-ai.jpg");
+        background-size: cover;
+        filter: blur(100px);
+
+        opacity: .7;
+
+    }
+}
+
+
+.titelkachel-titel {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: -10;
+    overflow: hidden;
+    height: 100vh;
+
+    h1 {
+        margin-top: 40vh;
+        margin-bottom: 20px;
+        //transition: all .1s linear;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    button {
+        padding: 13px 37px 13px 37px;
+        background-color: white;
+        border: none;
+        color: black;
+        font-family: "PolySans Median";
+        font-size: 18px;
+        top: 70vh;
+        position: absolute;
+        right: calc(50vw - 78px);
+        border-radius: 10px;
+    }
+}
+
+.kachel2 {
+    width: 100%;
+    background-color: black;
+    margin-top: 100vh;
+    padding-top: 150px;
+}
+
+.kachel3 {
+    width: 100%;
+    background-color: black;
+    padding-top: 150px;
+
+    h1 {
+        margin: 3px 0 3px 0;
+    }
+
+    h5 {
+        text-align: center;
+    }
+}
+
+.kachel4 {
+    width: 100%;
+    background-color: black;
+    padding: 150px 5vw 0 5vw;
+
+
+    box-sizing: border-box;
+    height: calc(80vh + 150px);
+
+    .col {
+        background-image: url("bg1.png");
+        background-size: cover;
+        //filter: blur(50px);
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        //position: absolute;
+        width: calc(100%);
+        height: 80vh;
+        opacity: .6;
+        z-index: 9999;
+    }
+
+    .col2 {
+        background-image: url("bg1.png");
+        background-size: cover;
+        filter: blur(200px);
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        //position: absolute;
+        width: calc(100%);
+        height: 80vh;
+        opacity: .7;
+        z-index: 9999;
+        transform: translateY(-80vh);
+        opacity: .8;
+        //opacity: 0;
+
+    }
+
+    .contain {
+        height: 80vh;
+        width: calc(100% - 10vw);
+        position: absolute; /* Position absolut setzen */
+        transform: translateY(-160vh);
+        overflow: hidden;
+
+        h2 {
+            transform: translateY(calc(40vh - 66px));
+        }
+
+        .bubble {
+            background-color: rgba(0, 0, 0, 0.5);
+            //filter: blur(5px);
+            padding: 7px 5vw 9px 5vw;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+   
+        }
+
+        .bubble1 {
+            top: 8vh;
+            left: 20vw;
+        }
+
+        .bubble2 {
+            top: 20vh;
+            right: 10vw;
+        }
+
+        .bubble3 {
+            bottom: 20vh;
+            left: 6vh;
+        }
+
+        .bubble4 {
+            bottom: 10vh;
+            right: calc(20vw - 60px);
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 56px;
+        }
+
+        .emoji1 {
+            top: 17vh;
+            left: 10vw;
+        }
+
+        .emoji2 {
+            bottom: 15vh;
+            right: calc(30vw - 60px);
+        }
+
+        .emoji3 {
+            bottom: calc(30vh - 200px);
+            left: 6vh;
+        }
+    }
+
+}
+
+.kachel5 {
+    height: calc(80vh + 150px);
+    width: 100%;
+    background-color: black;
+    padding: 100px 5vw 0 5vw;
+    box-sizing: border-box;
+    
+
+    .col {
+        background-image: url("bg2.png");
+        background-size: cover;
+        //filter: blur(50px);
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        //position: absolute;
+        width: calc(100%);
+        height: 80vh;
+        opacity: .6;
+        z-index: 9999;
+    }
+
+    .col2 {
+        background-image: url("bg2.png");
+        background-size: cover;
+        filter: blur(200px);
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        //position: absolute;
+        width: calc(100%);
+        height: 80vh;
+        opacity: .7;
+        z-index: 9999;
+        transform: translateY(-80vh);
+        opacity: .8;
+        //opacity: 0;
+
+    }
+
+    .contain {
+        height: 80vh;
+        width: calc(100% - 10vw);
+        position: absolute; /* Position absolut setzen */
+        transform: translateY(-160vh);
+        overflow: hidden;
+
+        h2 {
+            transform: translateY(calc(40vh - 66px));
+        }
+
+        .bubble {
+            background-color: rgba(0, 0, 0, 0.5);
+            //filter: blur(5px);
+            padding: 7px 5vw 9px 5vw;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+   
+        }
+
+        .bubble1 {
+            top: 8vh;
+            left: 20vw;
+        }
+
+        .bubble2 {
+            top: 20vh;
+            right: 10vw;
+        }
+
+        .bubble3 {
+            bottom: 20vh;
+            left: 20vw;
+        }
+
+        .bubble4 {
+            bottom: 10vh;
+            left: 10vw;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 56px;
+        }
+
+        .emoji1 {
+            top: 17vh;
+            left: 10vw;
+        }
+
+        .emoji2 {
+            top: 10vh;
+            right: calc(30vw - 60px);
+        }
+
+        .emoji3 {
+            bottom: calc(30vh - 200px);
+            right: calc(30vw - 70px);
+        }
+    }
+
+}
+
+.kachel6 {
+    width: 100%;
+    background-color: black;
+    padding-top: 150px;
+
+    h1 {
+        margin: 3px 0 3px 0;
+    }
+
+    h5 {
+        text-align: center;
+    }
+
+    .sb-container {
+        margin-top: 30px;
+        height: 333px;
+        width: 100%;
+        overflow: hidden;
+
+        .sb-container-center {
+            width: 10000px;
+            height: 100%;
+            transform: translateX(calc(50vw - 97.5px));
+
+            .sb-container-move {
+                height: 100%;
+                width: 10000px;
+                transform: translateX(calc(-235px * 1));
+                img {
+                    height: 333px;
+                    width: 195px;
+                    object-fit: cover;
+                    margin-right: 40px;
+                    float: left;
+                    display: inline;    
+                    border-radius: 5px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+}
+
+
+.kachel7 {
+    width: 100%;
+    background-color: black;
+    padding: 150px 5vw 0 5vw;
+    box-sizing: border-box;
+
+
+    .col {
+        background-image: url("abstract-backdrop-with-vibrant-multicolored-shapes-patterns-generated-by-ai.jpg");
+        background-size: cover;
+        filter: blur(100px);
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        //position: absolute;
+        width: calc(100%);
+        height: 80vh;
+        opacity: .7;
+        z-index: 9999;
+        opacity: .8;
+        //opacity: 0;
+
+    }
+    .contain {
+        height: 80vh;
+        width: calc(100% - 36px);
+        position: absolute; /* Position absolut setzen */
+        transform: translateY(-80vh);
+        overflow: hidden;
+
+        h1 {
+            transform: translateY(calc(30vh - 66px));
+        }
+
+        button {
+            padding: 13px 37px 13px 37px;
+            background-color: white;
+            border: none;
+            color: black;
+            font-family: "PolySans Median";
+            font-size: 18px;
+            top: 50vh;
+            position: absolute;
+            right: calc(50vw - 5vw - 78px);
+            border-radius: 10px;
+        }
+    }
+}
+
+.footer {
+    width: 100%;
+    background-color: black;
+    padding: 100px 5vw 5vw 5vw;
+    box-sizing: border-box;
+
+    h3 {
+        margin-bottom: 17px;
+    }
+
+    a {
+        color: #808080;
+        font-family: "PolySans Neutral";
+        display: block;
+        line-height: 32px;
+        font-size: 12px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+}

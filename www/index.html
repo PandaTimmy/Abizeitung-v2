@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abitur 2025</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        Math.clamp = function(x, min, max) {
+    return Math.min(Math.max(x, min), max);
+};
+    </script>
+</head>
+<body>
+
+    
+
+    <div id="navbar" class="navbar">
+        <h3>
+            Abizeitungsapp
+
+        </h3>
+
+        
+        <button onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'});">LOS!</button>
+    </div>
+
+
+    <div id="parallax" class="parallax">
+        <div class="parallax__layer parallax__layer--deep-deep">
+            <div class="titletext">
+                <h1>Abinauten</h1>
+            </div>
+
+        </div>
+        <div class="parallax__layer parallax__layer--deep">
+
+            <div class="funktionen">
+                <h5 style="animation-delay: 0ms;">Steckbriefe erstellen</h5>
+                <!-- <h5 style="animation-delay: 50ms;">Crush Count</h5> -->
+                <h5 style="animation-delay: 100ms;">Storys erzählen</h5>
+                <h5 style="animation-delay: 150ms;">Zitieren</h5>
+                <h5 style="animation-delay: 200ms;">Beichten gestehen</h5>
+                <h5 style="animation-delay: 250ms;">Umfragen durchführen</h5>
+                <h5 style="animation-delay: 300ms;">Abstimmungen halten</h5>
+                <h5 style="animation-delay: 350ms;">Rankings aufstellen</h5>
+
+                <div class="godark"></div>
+
+            </div>
+        </div>
+        <div class="parallax__layer parallax__layer--back">
+            <div class="astronaut">
+            </div>        
+            <div class="appname">
+                <h1>ABI<br>ZEITUNGS<br>APP</h1>
+            </div>
+
+
+        </div>
+
+        <div class="parallax__layer parallax__layer--base">
+            <div class="cover">
+                <div class="number25"></div>
+
+                <div class="motto">
+                    <h1>KEINE<br>ÜBERFLIEGER</h1>
+                    <br>
+                    <h1>TROTZDEM<br>ABGEHOBEN</h1>
+                </div>
+
+
+                
+
+            </div>
+
+            <div class="steckbriefecover">
+                <div class="npc1"><div id="npc1turn"></div></div>
+                <div class="app"></div>
+            </div>
+
+            <div class="steckbriefecover2">
+
+
+            
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="parallax__layer parallax__layer--fore">
+                
+
+            <div class="SUBTITLE"><h1>ABITUR<br>2025</h1></div>
+
+            <div class="SUBTITLEETWO"><h1>STECKBRIEFE</h1></div>
+
+
+
+            <div class="install">
+                <h1>ABI<br>ZEITUNGS<br>APP</h1><br><br><br>
+
+                <button class="button" id="cta" style="pointer-events: all; cursor: pointer;" onclick="console.log('Navigate App'); window.location.href = 'app';">Loslegen</button>
+            </div>
+        </div>
+
+
+        <div class="parallax__layer parallax__layer--fore-fore">
+            <div class="npc2"><div id="npc2turn"></div></div>
+
+
+        </div>
+            
+        </div>
+
+
+        <script>
+
+                $(document.getElementById("parallax")).scroll(function() {
+                var homeTop = $(document.getElementById("parallax")).scrollTop();
+
+                $(".titletext").each(function() {
+
+                    var opacity = (1 - homeTop / 1000);
+                    $(this).css("opacity", opacity);
+                });
+
+                $(".npc1").each(function() {
+                    var height = $(this).height();
+                    var offset = $(this).offset().top;
+                    var opacity = (height - homeTop + offset) / height;
+                    $(this).css("opacity", opacity);
+                    var rotateX = 0.05 + offset / 20000;
+                    var rotateY = 0.05 - offset / 4000;
+                    rotateY = Math.clamp(rotateY, -0.1, 0.2);
+                    var rotateZ = 0 + offset / 100;
+
+                    if(offset > 2500) {
+                        $(document.getElementById("npc1turn")).css("opacity", 0);
+                    } else {
+                        $(document.getElementById("npc1turn")).css("opacity", 1);
+                        console.log("R"+rotateX);
+                        // console.log(offset);
+
+                    }
+
+                    $(document.getElementById("npc1turn")).css("transform", 'perspective(.0000005px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) rotateZ('+rotateZ+'deg)')
+                });
+
+                $(".npc2").each(function() {
+                    var height = $(this).height();
+                    var offset = $(this).offset().top;
+                    var opacity = (height - homeTop + offset) / height;
+                    $(this).css("opacity", opacity);
+                    var rotateX = 0.02 + offset / 20000;
+                    var rotateY = -0.1 - offset / 4000;
+                    rotateY = Math.clamp(rotateY, -0.2, 0);
+
+                    var rotateZ = 0 + offset / 100;
+
+                    if(offset > 2500) {
+                        $(document.getElementById("npc2turn")).css("opacity", 0);
+                    } else {
+                        $(document.getElementById("npc2turn")).css("opacity", 1);
+                        // console.log("R"+rotateX);
+                        // console.log(offset);
+                    }
+
+                    $(document.getElementById("npc2turn")).css("transform", 'perspective(.0000005px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) rotateZ('+rotateZ+'deg)')
+                });
+
+            });
+
+            </script>
+
+    </div>
+
+
+
+      <style>
+
+.parallax {
+    perspective: 1px;
+    height: 100svh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE und Edge */
+    scrollbar-width: none; /* Firefox */
+
+    
+}
+
+.parallax {
+  perspective-origin-x: 100vw;
+}
+.parallax__layer {
+  transform-origin-x: 100vw;
+}
+
+.parallax::-webkit-scrollbar {
+    display: none; /* Chrome, Safari und Opera */
+}
+
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.parallax__layer--fore-fore {
+    transform: translateZ(.5px) scale(.95);
+  }
+.parallax__layer--fore {
+    transform: translateZ(.05px) scale(.95);
+  }
+
+.parallax__layer--base {
+     transform: translateZ(0);
+}
+.parallax__layer--back {
+    transform: translateZ(-1px) scale(2);
+}
+.parallax__layer--deep {
+    transform: translateZ(-2px) scale(3);
+}
+.parallax__layer--deep-deep {
+    transform: translateZ(-5px) scale(6);
+}
+.parallax__group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+
+
+/*houdini*/
+@property --blink-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+/* #fallback @keyframes blink-animation {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}*/
+
+@keyframes blink-animation {
+  0%,
+  100% {
+    opacity: var(--blink-opacity, 1);
+  }
+  50% {
+    opacity: 0;
+  }
+}
+/*houdini*/
+
+/*base*/
+:root {
+  font-family: Inter, sans-serif;
+
+  --stripe-color: #000000;
+  --bg: var(--stripe-color);
+  --maincolor: var(--bg);
+}
+
+/* body {
+  width: 100cqw;
+  min-height: 100cqh;
+  display: flex;
+  place-content: center;
+  place-items: flex-start center;
+  background: var(--bg);
+} */
+/* .hero::after {
+  filter: blur(10px) opacity(50%) saturate(200%);
+}
+
+.hero {
+  filter: blur(10px) opacity(50%) saturate(200%);
+} */
+
+/*custom*/
+
+@keyframes smoothBg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+
+      </style>
+    
+</body>
+</html>
