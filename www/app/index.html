@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Abizeitungsapp</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- viewport-fit=cover -->
+
+    <link rel="stylesheet" href="app.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.3.min.js"></script>
+    <script src="javascript/cookies.js"></script>
+    <script src="javascript/ausloggen.js"></script>
+    <script src="javascript/appendHTML.js"></script>
+    <script src="javascript/navigation.js"></script>
+    <script src="javascript/rescaleTextarea.js"></script>
+    <script src="javascript/reloadUI.js"></script>
+    <script src="javascript/zeilenTabelleZählen.js"></script>
+    <script src="javascript/_htmlload_profil.js"></script>
+    <script src="javascript/_htmlload_benutzer.js"></script>
+    <script src="javascript/_htmlload_benutzerbearbeiten.js"></script>
+    <script src="javascript/_htmlload_storyinfo.js"></script>
+    <script src="javascript/_htmlload_zitatinfo.js"></script>
+    <script src="javascript/_htmlload_beichteinfo.js"></script>
+    <script src="javascript/_contentload_storysmoderieren.js"></script>
+    <script src="javascript/_contentload_zitatemoderieren.js"></script>
+    <script src="javascript/_contentload_beichtenmoderieren.js"></script>
+    <script src="javascript/zitatgesendet.js"></script>
+    <script src="javascript/zitatAbschicken.js"></script>
+    <script src="javascript/beichteAbschicken.js"></script>
+    <script src="javascript/storyAbschicken.js"></script>
+    <script src="javascript/storys/storyFavorisieren.js"></script>
+    <script src="javascript/storys/storyLöschen.js"></script>
+    <script src="javascript/zitate/zitatFavorisieren.js"></script>
+    <script src="javascript/zitate/zitatLöschen.js"></script>
+    <script src="javascript/beichten/beichteFavorisieren.js"></script>
+    <script src="javascript/beichten/beichteLöschen.js"></script>
+
+    <link rel="preload" href="beichten-moderieren.html" as="document">
+    <link rel="preload" href="beichte-info.html" as="document">
+    <link rel="preload" href="storys-moderieren.html" as="document">
+    <link rel="preload" href="story-info.html" as="document">
+    <link rel="preload" href="zitate-moderieren.html" as="document">
+    <link rel="preload" href="zitat-info.html" as="document">
+    <link rel="preload" href="benutzer.html" as="document">
+    <link rel="preload" href="benutzer-bearbeiten.html" as="document">
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+      
+      <style>
+        .checkbox-wrapper-7 .tgl {
+          display: none;
+        }
+        .checkbox-wrapper-7 .tgl,
+        .checkbox-wrapper-7 .tgl:after,
+        .checkbox-wrapper-7 .tgl:before,
+        .checkbox-wrapper-7 .tgl *,
+        .checkbox-wrapper-7 .tgl *:after,
+        .checkbox-wrapper-7 .tgl *:before,
+        .checkbox-wrapper-7 .tgl + .tgl-btn {
+          box-sizing: border-box;
+        }
+        .checkbox-wrapper-7 .tgl::-moz-selection,
+        .checkbox-wrapper-7 .tgl:after::-moz-selection,
+        .checkbox-wrapper-7 .tgl:before::-moz-selection,
+        .checkbox-wrapper-7 .tgl *::-moz-selection,
+        .checkbox-wrapper-7 .tgl *:after::-moz-selection,
+        .checkbox-wrapper-7 .tgl *:before::-moz-selection,
+        .checkbox-wrapper-7 .tgl + .tgl-btn::-moz-selection,
+        .checkbox-wrapper-7 .tgl::selection,
+        .checkbox-wrapper-7 .tgl:after::selection,
+        .checkbox-wrapper-7 .tgl:before::selection,
+        .checkbox-wrapper-7 .tgl *::selection,
+        .checkbox-wrapper-7 .tgl *:after::selection,
+        .checkbox-wrapper-7 .tgl *:before::selection,
+        .checkbox-wrapper-7 .tgl + .tgl-btn::selection {
+          background: none;
+        }
+        .checkbox-wrapper-7 .tgl + .tgl-btn {
+          outline: 0;
+          display: block;
+          width: 44rem;
+          height: 22rem;
+          position: relative;
+          cursor: pointer;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+        }
+        .checkbox-wrapper-7 .tgl + .tgl-btn:after,
+        .checkbox-wrapper-7 .tgl + .tgl-btn:before {
+          position: relative;
+          display: block;
+          content: "";
+          width: 50%;
+          height: 100%;
+        }
+        .checkbox-wrapper-7 .tgl + .tgl-btn:after {
+          left: 0;
+        }
+        .checkbox-wrapper-7 .tgl + .tgl-btn:before {
+          display: none;
+        }
+        .checkbox-wrapper-7 .tgl:checked + .tgl-btn:after {
+          left: 50%;
+        }
+      
+        .checkbox-wrapper-7 .tgl-ios + .tgl-btn {
+          background: #fbfbfb23;
+          border-radius: 20rem;
+          padding: 2px;
+          transition: all 0.4s ease;
+          border: 1px solid #e8eae96d;
+        }
+        .checkbox-wrapper-7 .tgl-ios + .tgl-btn:after {
+          border-radius: 20rem;
+          background: #fbfbfb;
+          transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+        }
+        .checkbox-wrapper-7 .tgl-ios + .tgl-btn:hover:after {
+          will-change: padding;
+        }
+        .checkbox-wrapper-7 .tgl-ios + .tgl-btn:active {
+          box-shadow: inset 0 0 0 2em #e8eae958;
+        }
+        .checkbox-wrapper-7 .tgl-ios + .tgl-btn:active:after {
+          padding-right: 0.8em;
+        }
+        .checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn {
+          background: #ffffffba;
+        }
+        .checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:active {
+          box-shadow: none;
+        }
+        .checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:active:after {
+          margin-left: -0.8em;
+        }
+      </style>
+      
+      
+      
+      
+
+</head>
+<body>
+
+
+<script>
+    function handleViewportChange() {
+        rescaleTextareas();
+    }
+
+
+    // setTimeout(function(){ navigate("storys-moderieren"); }, 60);
+
+    //////////////////////////////////////////////////////////////////////////////// HANDLE VIEWPORT X RESIZE
+
+    // Event-Listener für das "resize"-Event
+    window.addEventListener('resize', function() {
+
+        if (window.innerWidth !== handleViewportChange.lastWidth) {
+ 
+            handleViewportChange.lastWidth = window.innerWidth;
+            handleViewportChange();
+        }
+    });
+
+    // Initialisieren der letzten Breite des Viewports
+    handleViewportChange.lastWidth = window.innerWidth;
+
+    // Funktion beim Seitenladen aufrufen, um den Ausgangspunkt zu setzen
+    handleViewportChange();
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+
+
+</script>
+
+
+
+
+<div class="backgroundGlow" id="backgroundGlow"></div>
+
+
+<div class="app-window">
+
+    <script>
+        var appStatus = "anmelden"
+
+        function setIgnoreNavLayout() {
+            document.getElementById("current-msc").style.top = 0;
+            document.getElementById("current-msc").style.padding = 0;
+            console.log("Adjusted Padding MSC");
+        }
+        function unsetIgnoreNavLayout() {
+            document.getElementById("current-msc").style.top = "64rem";
+            document.getElementById("current-msc").style.paddingBottom = "161rem";
+            console.log("Adjusted Padding MSC");
+
+        }
+        function setIgnoreFooterLayout() {
+            document.getElementById("current-msc").style.paddingBottom = "64rem";
+            console.log("Adjusted Padding MSC");
+
+        }
+        function unsetIgnoreFooterLayout() {
+            document.getElementById("current-msc").style.paddingBottom = "161rem";
+            console.log("Adjusted Padding MSC");
+
+        }
+
+
+        function initialize() {
+            reloadUI();
+            setIgnoreNavLayout();
+        }
+
+        function restyleNavbar() {
+            if (navigateBack) {
+                document.getElementById("navbar-navigateBack").style.opacity = 1;
+            } else {
+                document.getElementById("navbar-navigateBack").style.opacity = 0;
+            }
+
+            if (navigateContinue) {
+                document.getElementById("navbar-navigateContinue").style.opacity = 1;
+            } else {
+                document.getElementById("navbar-navigateContinue").style.opacity = 0;
+            }
+            document.getElementById("navbar-title").innerText = navigateTitle;
+        }
+
+        function restyleFooter() {
+            if (footerbarAdmin) {
+                document.getElementById("footerbar-admin").style.display = "block";
+            } else {
+                document.getElementById("footerbar-admin").style.display = "none";
+            }
+            if (footerbarShow) {
+                document.getElementById("footerbar").style.display = "flex";
+
+                const elements = document.querySelectorAll('.footer-icon');
+
+                elements.forEach(element => {
+                    element.style.transition = "all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+                    element.style.opacity = 1;
+                });
+                
+                setTimeout(function(){ document.getElementById("footerbar-admin").style.transform = 'scale(1)'; }, 200);
+                setTimeout(function(){ document.getElementById("footerbar-profil").style.transform = 'scale(1)'; }, 175);
+                setTimeout(function(){ document.getElementById("footerbar-ura").style.transform = 'scale(1)'; }, 150);
+                setTimeout(function(){ document.getElementById("footerbar-bzs").style.transform = 'scale(1)'; }, 125);
+                setTimeout(function(){ document.getElementById("footerbar-steckbriefe").style.transform = 'scale(1)'; }, 100);
+
+
+                
+
+            } else {
+                //document.getElementById("footerbar").style.display = "none";
+                document.getElementById("footerbar").style.transition = "all 1s ease-in-out";
+
+                const elements = document.querySelectorAll('.footer-icon');
+
+                elements.forEach(element => {
+                    element.style.transition = "all .3s ease-in-out";
+                });
+
+                setTimeout(function(){ document.getElementById("footerbar-admin").style.transform = 'scale(0)'; }, 0);
+                setTimeout(function(){ document.getElementById("footerbar-profil").style.transform = 'scale(0)'; }, 20);
+                setTimeout(function(){ document.getElementById("footerbar-ura").style.transform = 'scale(0)'; }, 40);
+                setTimeout(function(){ document.getElementById("footerbar-bzs").style.transform = 'scale(0)'; }, 60);
+                setTimeout(function(){ document.getElementById("footerbar-steckbriefe").style.transform = 'scale(0)'; }, 80);
+
+                setTimeout(function(){ document.getElementById("footerbar-admin").style.opacity = 0; }, 0);
+                setTimeout(function(){ document.getElementById("footerbar-profil").style.opacity = 0; }, 20);
+                setTimeout(function(){ document.getElementById("footerbar-ura").style.opacity = 0; }, 40);
+                setTimeout(function(){ document.getElementById("footerbar-bzs").style.opacity = 0; }, 60);
+                setTimeout(function(){ document.getElementById("footerbar-steckbriefe").style.opacity = 0; }, 80);
+                
+            }
+
+            document.getElementById("footerbar-img-steckbriefe").style.backgroundImage = "url('icons/steckbriefe.png')";
+            document.getElementById("footerbar-img-bzs").style.backgroundImage = "url('icons/bzs.png')";
+            document.getElementById("footerbar-img-ura").style.backgroundImage = "url('icons/ura.png')";
+            document.getElementById("footerbar-img-profil").style.backgroundImage = "url('icons/profil.png')";
+            document.getElementById("footerbar-img-admin").style.backgroundImage = "url('icons/settings.png')";
+
+
+            if (footerbarSelected == "steckbriefe") {
+                document.getElementById("footerbar-img-steckbriefe").style.backgroundImage = "url('icons/steckbriefe-selected.png')";
+            }
+            if (footerbarSelected == "bzs") {
+                document.getElementById("footerbar-img-bzs").style.backgroundImage = "url('icons/bzs-selected.png')";
+            }
+            if (footerbarSelected == "ura") {
+                document.getElementById("footerbar-img-ura").style.backgroundImage = "url('icons/ura-selected.png')";
+            }
+            if (footerbarSelected == "profil") {
+                document.getElementById("footerbar-img-profil").style.backgroundImage = "url('icons/profil-selected.png')";
+            }
+            if (footerbarSelected == "admin") {
+                document.getElementById("footerbar-img-admin").style.backgroundImage = "url('icons/settings-selected.png')";
+            }
+
+        }
+
+
+
+        
+ 
+        var navigateBack = false;
+        var navigateContinue = false;
+        var navigateTitle = "";
+
+        var footerbarShow = false;
+        var footerbarSelected = "profil";
+        var footerbarAdmin = false;
+
+        
+
+        function transition(type) {
+
+            var documentLoaded = false;
+
+            setTimeout(function(){
+                document.getElementById("current-msc").style.transition = "0s all linear";
+            }, 1000);
+
+            document.getElementById("transition-msc").innerHTML = document.getElementById("current-msc").innerHTML;
+            
+            document.getElementById("transition-msc").style.transition = "0s all linear";
+            document.getElementById("transition-msc").style.transform = 'scale(1)';
+            document.getElementById("transition-msc").style.opacity = 1;
+            document.getElementById("transition-msc").style.display = "block";
+            document.getElementById("transition-msc").style.paddingBottom = document.getElementById("current-msc").style.paddingBottom;
+
+            document.getElementById("transition-msc").firstElementChild.scrollTop = document.getElementById("current-msc-ms").scrollTop;
+            document.getElementById("transition-msc").firstElementChild.style.pointerEvents = "none";
+            document.getElementById("current-msc-ms").scrollTop = 0;
+
+            console.log("Adjusted Padding Transition MSC");
+
+            function removeAllIds(element) {
+                // Überprüfe, ob das übergebene Element gültig ist
+                if (!element || !element.nodeType || element.nodeType !== 1) {
+                    console.error('Ungültiges Element');
+                    return;
+                }
+
+                // Iteriere über alle Kindknoten des Elements
+                const children = element.children;
+                for (let i = 0; i < children.length; i++) {
+                    const child = children[i];
+
+                    // Entferne die ID des Kindknotens, falls vorhanden
+                    if (child.id) {
+                        child.removeAttribute('id');
+                    }
+
+                    // Falls der Kindknoten selbst wiederum Kinder hat, entferne auch deren IDs
+                    if (child.children.length > 0) {
+                        removeAllIds(child);
+                    }
+                }
+            }
+
+            // Beispielaufruf: Entferne alle IDs von den Kindknoten des Elements mit der ID 'container'
+            const transitionMSC = document.getElementById('transition-msc');
+            removeAllIds(transitionMSC);
+
+            if (type == "zoom-out") {
+
+
+                document.getElementById("current-msc").style.transition = "0s all linear";
+                document.getElementById("current-msc").style.transform = 'scale(1.2)';
+                document.getElementById("current-msc").style.opacity = 0;
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.transition = ".2s all ease-in";
+                    document.getElementById("transition-msc").style.transform = 'scale(.9)';
+                    document.getElementById("transition-msc").style.opacity = 0;
+                }, 1);
+
+                setTimeout(function(){
+                        document.getElementById("current-msc").style.transition = ".4s all ease";
+                        document.getElementById("current-msc").style.transform = 'scale(1)';
+                        document.getElementById("current-msc").style.opacity = 1;
+                }, 100);
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.display = "none";
+                }, 500);
+            }
+
+
+            if (type == "zoom") {
+
+                document.getElementById("current-msc").style.transition = "0s all linear";
+                document.getElementById("current-msc").style.transform = 'scale(.9)';
+                document.getElementById("current-msc").style.opacity = 0;
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.transition = ".2s all ease-in";
+                    document.getElementById("transition-msc").style.transform = 'scale(.9)';
+                    document.getElementById("transition-msc").style.opacity = 0;
+                }, 1);
+
+                setTimeout(function(){
+                        document.getElementById("current-msc").style.transition = ".4s all ease";
+                        document.getElementById("current-msc").style.transform = 'scale(1)';
+                        document.getElementById("current-msc").style.opacity = 1;
+                }, 100);
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.display = "none";
+                }, 500);
+            }
+
+            if (type == "swipe-left") {
+
+                document.getElementById("transition-msc").style.transition = "0s all linear";
+                document.getElementById("transition-msc").style.transform = 'translateX(0)';
+                document.getElementById("transition-msc").style.opacity = 1;
+
+                document.getElementById("current-msc").style.transition = "0s all linear";
+                document.getElementById("current-msc").style.transform = 'translateX(100vw)';
+                document.getElementById("current-msc").style.opacity = 0;
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.transition = ".45s all ease";
+                    document.getElementById("transition-msc").style.transform = 'translateX(-100vw)';
+                    document.getElementById("transition-msc").style.opacity = 0;
+                }, 1);
+
+                setTimeout(function(){
+                    document.getElementById("current-msc").style.transition = ".45s all ease";
+                    document.getElementById("current-msc").style.transform = 'translateX(0)';
+                    document.getElementById("current-msc").style.opacity = 1;
+                }, 1);
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.display = "none";
+                }, 600);
+            }
+
+            if (type == "swipe-right") {
+
+                document.getElementById("transition-msc").style.transition = "0s all linear";
+                document.getElementById("transition-msc").style.transform = 'translateX(0)';
+                document.getElementById("transition-msc").style.opacity = 1;
+
+                document.getElementById("current-msc").style.transition = "0s all linear";
+                document.getElementById("current-msc").style.transform = 'translateX(-100vw)';
+                document.getElementById("current-msc").style.opacity = 0;
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.transition = ".45s all ease";
+                    document.getElementById("transition-msc").style.transform = 'translateX(100vw)';
+                    document.getElementById("transition-msc").style.opacity = 0;
+                }, 1);
+
+                setTimeout(function(){
+                    document.getElementById("current-msc").style.transition = ".45s all ease";
+                    document.getElementById("current-msc").style.transform = 'translateX(0)';
+                    document.getElementById("current-msc").style.opacity = 1;
+                }, 1);
+
+                setTimeout(function(){
+                    document.getElementById("transition-msc").style.display = "none";
+                }, 600);
+            }
+    }
+
+    </script>
+
+
+    <div id="navbar" class="navbar">
+        <button id="navbar-navigateBack" class="img back" onclick="navbarNavigateBack()"></button>
+        <h3 id="navbar-title">Anmelden</h3>
+        <button id="navbar-navigateContinue" class="img continue" onclick="navigateContinue()"></button>
+    </div>
+
+    <div id="current-msc" class="main-scroll-container">
+
+        <div id="current-msc-ms" class="main-scroll">
+
+        <!-- <h1>ABI<br>ZEITUNGS<br>APP</h1>
+
+        <div style="height: 40px;"></div> -->
+
+        <div class="animation-container">
+            <div class="centered-text"><h1 class="animate-bounce-long" style="animation-delay: 0;"><div>ABI<br>ZEITUNGS<br>APP</div></h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce-long" style="animation-delay: 2.5s;"><div></div>STECKBRIEFE</h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce-long" style="animation-delay: 5s;"><div></div>UMFRAGEN</h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce-long" style="animation-delay: 7.5s;"><div>BERICHTEN</div></h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce-long" style="animation-delay: 10s;"><div></div>GESTEHEN</h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce-long" style="animation-delay: 12.5s;"><div></div>ZITIEREN</h1></div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(-8vh) translateX(-25vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: .5s;">👩‍🚀</h1>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(17vh) translateX(60vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce-long" style="animation-delay: .626s;"><div class="bubble">ABI 2025!</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(-17vh) translateX(25vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: .25s;">👨‍🚀</h1>
+                </div>
+            </div>
+
+            
+
+
+            <!-- <div class="centered-text">
+                <div style="transform: translateY(20vh) translateX(-5vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 3s;">🤫</h1>
+                </div>
+            </div> -->
+            
+            <div class="centered-text">
+                <div style="transform: translateY(-010vh) translateX(40vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce-long" style="animation-delay: 3.125s;"><div class="bubble">Für Freunde machen</div></h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(15vh) translateX(25vw);">
+                    <div style="display: inline-block;">
+                        <div class="animate-bounce-long" style="animation-delay: 3.0625s;">
+                            <div class="img" style="background-image: url('icons/stock-male.jpeg');"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(11vh) translateX(70vw);">
+                    <div style="display: inline-block;">
+                        <div class="animate-bounce-long" style="animation-delay: 3.3625s;">
+                            <div class="img r2" style="background-image: url('icons/stock-male.jpeg');"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(-15vh) translateX(-10vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 5.5s;">📈</h1>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(17vh) translateX(45vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce-long" style="animation-delay: 5.626s;"><div class="bubble">Lehrer-Klischees</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(22vh) translateX(-13vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 5.75s;">📊</h1>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(13vh) translateX(20vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 8s;">😋</h1>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(-8vh) translateX(25vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce-long" style="animation-delay: 8.125s;"><div class="bubble">Klagemauer</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(-17vh) translateX(25vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 8.25s;">🫣</h1>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(20vh) translateX(-15vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 10.5s;">🤫</h1>
+                </div>
+            </div>
+            
+            <div class="centered-text">
+                <div style="transform: translateY(-010vh) translateX(40vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce-long" style="animation-delay: 10.625s;"><div class="bubble">Hepfer Edits</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(17vh) translateX(16vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 10.75s;">🫢</h1>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(-15vh) translateX(-10vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 13s;">😦</h1>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(17vh) translateX(45vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce-long" style="animation-delay: 13.125s;"><div class="bubble">Bueno in Chemie</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(22vh) translateX(-13vw);">
+                    <h1 class="animate-bounce-long" style="animation-delay: 13.25s;">🖐️🙂‍↕️</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="animation-container">
+            <div class="centered-text"><h1 class="animate-bounce" style="animation-delay: 0;"><div>BERICHTEN</div></h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce" style="animation-delay: 2.5s;"><div></div>GESTEHEN</h1></div>
+
+            <div class="centered-text"><h1 class="animate-bounce" style="animation-delay: 5s;"><div></div>ZITIEREN</h1></div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(13vh) translateX(20vw);">
+                    <h1 class="animate-bounce" style="animation-delay: .5s;">😋</h1>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(-8vh) translateX(25vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce" style="animation-delay: .626s;"><div class="bubble">Klagemauer</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(-17vh) translateX(25vw);">
+                    <h1 class="animate-bounce" style="animation-delay: .75s;">🫣</h1>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(20vh) translateX(-15vw);">
+                    <h1 class="animate-bounce" style="animation-delay: 3s;">🤫</h1>
+                </div>
+            </div>
+            
+            <div class="centered-text">
+                <div style="transform: translateY(-010vh) translateX(40vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce" style="animation-delay: 3.125s;"><div class="bubble">Hepfer Edits</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(17vh) translateX(16vw);">
+                    <h1 class="animate-bounce" style="animation-delay: 3.25s;">🫢</h1>
+                </div>
+            </div>
+
+
+            <div class="centered-text">
+                <div style="transform: translateY(-15vh) translateX(-10vw);">
+                    <h1 class="animate-bounce" style="animation-delay: 5.5s;">😦</h1>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(17vh) translateX(45vw);">
+                    <div style="display: inline-block;">
+                        <h4 class="animate-bounce" style="animation-delay: 5.626s;"><div class="bubble">Bueno in Chemie</div></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered-text">
+                <div style="transform: translateY(22vh) translateX(-13vw);">
+                    <h1 class="animate-bounce" style="animation-delay: 5.75s;">🖐️🙂‍↕️</h1>
+                </div>
+            </div>
+        </div> -->
+
+
+
+        <div style="height: 40px;"></div>
+
+        <div id="WEITERDIALOG" style="display: block; overflow: hidden;">
+            <div style="height: 80px;"></div>
+
+            <button class="primary-button" onclick="navigate('profil');" id="continueAsPlaceholder">Weiter</button>
+            <button class="secondary-button" onclick="switchManuelleAnmeldung()">Abmelden</button>
+
+            <script>
+                continueAsPlaceholderFill();
+
+                function continueAsPlaceholderFill() {
+                    document.getElementById('continueAsPlaceholder').textContent = "Weiter als "+getCookie('anzeigename');
+                }
+            </script>
+
+        </div>  
+
+        <script>
+            function switchManuelleAnmeldung() {
+
+                document.getElementById("WEITERDIALOG").style.transition = "0s all cubic-bezier(.47,0,.56,1)";
+                document.getElementById("WEITERDIALOG").style.height = "216rem";
+                document.getElementById("WEITERDIALOG").style.opacity = 1;
+
+
+                document.getElementById("ANMELDEFORMULAR").style.transition = "0s all cubic-bezier(.47,0,.56,1)";
+                document.getElementById("ANMELDEFORMULAR").style.height = "0rem";
+                document.getElementById("ANMELDEFORMULAR").style.opacity = 0;
+                document.getElementById("ANMELDEFORMULAR").style.display = "block";
+
+                ausloggen()
+
+
+                setTimeout(function(){
+                    document.getElementById("WEITERDIALOG").style.transition = ".5s all cubic-bezier(.47,0,.56,1)";
+                    document.getElementById("WEITERDIALOG").style.height = "0rem";
+                    document.getElementById("WEITERDIALOG").style.opacity = 0;
+                }, 10);
+
+
+                setTimeout(function(){
+
+
+                    setTimeout(function(){
+                        document.getElementById("ANMELDEFORMULAR").style.transition = ".5s all cubic-bezier(.47,0,.56,1)";
+                        document.getElementById("ANMELDEFORMULAR").style.height = "280rem";
+                        document.getElementById("ANMELDEFORMULAR").style.opacity = 1;
+                    }, 10);
+                }, 500);
+
+
+            }
+        </script>
+
+
+        <div id="ANMELDEFORMULAR" style="display: block; overflow: hidden;">
+
+            <h3>Anmelden</h3>
+
+            <div class="input">
+                <input id="input-username" placeholder="" autocomplete="username"><label class="input-title"><h5>Benutzername</h5></label>
+            </div>
+
+            <div class="input">
+                <input id="input-password" type="password" placeholder="" autocomplete="current-password"><label class="input-title"><h5>Passwort</h5></label>
+            </div>
+
+            <div style="height: 40px;"></div>
+
+
+            <script src="javascript/anmelden.js"></script>
+            <button id="signin-button" class="primary-button" onclick="anmelden();">Anmelden</button>
+
+            <button id="signin-button-load" style="display: none;" class="secondary-button"><div class="load button"></div>Lädt</button>
+            <button id="signin-button-error" style="display: none;" class="secondary-button">Ungültige Anmeldedaten</button>
+
+        </div>
+
+        <script>
+            if(getCookie("login") != "") {
+                document.getElementById("ANMELDEFORMULAR").style.transition = "0s all ease-in-out";
+                document.getElementById("ANMELDEFORMULAR").style.height = "0rem";
+                document.getElementById("ANMELDEFORMULAR").style.opacity = 0;
+                document.getElementById("ANMELDEFORMULAR").style.display = "none";
+
+            } else {
+                document.getElementById("WEITERDIALOG").style.display = "none";
+
+            }
+        </script>
+
+        <div style="height: 40px;"></div>
+
+
+    </div>
+
+    </div>
+
+    <div id="transition-msc" class="main-scroll-container transition-msc" style="pointer-events: none;">
+    </div>
+
+
+    <!-- <div class="main-scroll-container">
+        <div class="main-scroll">
+
+            
+        </div>
+    </div> -->
+   
+    <!-- <div class="main-scroll-container" style="transform: translateX(50vw);">
+
+    <div class="main-scroll">
+
+
+
+        <div class="moderation-select">
+            <button class="selected">Anmelden</button>
+            <button>Anmelden</button>
+        </div>
+        
+        <div style="height: 40px;"></div>
+
+        
+        <h1>Title</h1>
+
+        <h5 class="title-subtitle-centered">
+            Lorem Ipsum
+        </h5>
+
+
+
+
+
+        <div class="textbox">
+            <h3>Lorem Ipsum</h3>
+            <div style="height: 13px;"></div>
+            <h4>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</h4>
+        </div>
+
+        <div class="range">
+            <input type="range" min="0" max="10" step="1">
+        </div>
+
+        <div id="pole1" class="pole">
+
+            <div class="pole-item">
+                <input type="radio" id="pole1-item1" name="pole1" value="pole1-item1">
+                <label for="pole1-item1"><h4>
+                    Item 1
+                </h4></label>
+            </div>
+
+            <div class="pole-item">
+                <input type="radio" id="pole1-item2" name="pole1" value="pole1-item2">
+                <label for="pole1-item2"><h4>
+                    Item 2
+                </h4></label>
+            </div>
+
+            <div class="pole-item">
+                <input type="radio" id="pole1-item3" name="pole1" value="pole1-item3">
+                <label for="pole1-item3"><h4>
+                    Item 3
+                </h4></label>
+            </div>
+        </div>
+
+        <div id="sortable1" class="sortable">
+            <div class="sortable-item"><h4>Item 1</h4></div>
+            <div class="sortable-item"><h4>Item 2</h4></div>
+            <div class="sortable-item"><h4>Item 3</h4></div>
+            <div class="sortable-item"><h4>Item 4</h4></div>
+            <div class="sortable-item"><h4>Item 5</h4></div>
+            <div class="sortable-item"><h4>Item 6</h4></div>
+        </div>
+
+        <script>
+            new Sortable(sortable1, {
+                animation: 150,
+                ghostClass: 'sortable-item-drag'
+            });
+        </script>
+
+
+
+
+
+
+
+        <div style="height: 40px;"></div>
+
+        <h3>Bilder 📸</h3>
+
+        <div class="bilder-container">
+            <div class="empty-image-container title">
+                <label for="file-upload-1">
+
+                    <h4>Titelbild</h4>
+                    <div class="img"></div>
+                    <h4>Seitenverhältnis<br>16 zu 9</h4>
+
+                </label>
+                <input id="file-upload-1" type="file" accept="image/*">
+            </div>
+
+            <div class="image-container" style="background-image: url('icons/stock-male.jpeg');">
+                <label for="image-edit-1">
+                    <div class="img"><div></div></div>
+                    <div class="img"><div class="star"></div></div>
+                </label>
+                <select id="image-edit-1">
+                    <option value="alle" selected disabled hidden>Bild Optionen</option>
+                    <option>🗑️ Entfernen</option>
+                </select>
+            </div>
+
+
+            <div class="empty-image-container">
+                <label for="file-upload-2">
+
+                    <h4>Weitere Bilder</h4>
+                    <div class="img"></div>
+                    <h4>Seitenverhältnis<br>4 zu 3</h4>
+
+                </label>
+                <input id="file-upload-2" type="file" accept="image/*">
+            </div>
+        </div>
+
+
+
+
+        <div style="height: 40px;"></div>
+
+        <h3>Filter</h3>
+        <div class="filter">
+            <select>
+                <option value="alle" selected disabled hidden>Filter</option>
+                <option>Filter1</option>
+                <option>Filter2</option>
+                <option>Filter3</option>
+            </select>
+            <div class="img"><div></div></div>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <h3>Info</h3>
+
+
+
+        <div class="info">
+            Info normal. Lorem Ipsum Dolor Sit Amet.
+        </div>
+
+        <div class="info small">
+            Indo small. Lorem Ipsum Dolor Sit Amet.
+        </div>
+
+        <div style="height: 40px;"></div>
+
+
+
+        <h3>Button</h3>
+
+        <button class="primary-button">Primary</button>
+        <button class="secondary-button">Secondary</button>
+
+        <div style="height: 40px;"></div>
+
+
+
+
+
+
+        <h3>Button Link Icon</h3>
+
+        <div class="button-icon">
+            <div class="img">
+                <div class="img-img" style="background-image: url('icons/stock-male.jpeg');"></div>
+            </div>
+
+            <div class="text"><div>
+                <h4>Lorem Ipsum</h4>
+                <h5>Lorem Ipsum</h5>
+            </div></div>
+
+            <select>
+                <option value="alle" selected disabled hidden>Optionen</option>
+                <option>Test1</option>
+                <option>Test2</option>
+                <option>Test3</option>
+            </select>
+
+            <div class="img-cta"><div class="context"></div></div>
+
+        </div>
+
+        <button class="button-icon">
+            <div class="img">
+                <div class="img-img status" style="background-image: url('icons/stock-male.jpeg');"></div>
+                <div class="img-status"></div>
+            </div>
+
+            <div class="text"><div>
+                <h4>Lorem Ipsum</h4>
+                <h5>Lorem Ipsum</h5>
+            </div></div>
+
+            <div class="img-cta"><div class="link"></div></div>
+
+        </button>
+
+        <button class="button-icon">
+            <div class="img icon">
+                <div class="settings"></div>
+            </div>
+
+            <div class="text"><div>
+                <h4>Lorem Ipsum</h4>
+                <h5>Lorem Ipsum</h5>
+            </div></div>
+
+            <div class="img-cta"><div class="link"></div></div>
+
+        </button>
+
+
+        <button class="button-icon">
+            <div class="img icon">
+                <div class="add"></div>
+            </div>
+
+            <div class="text"><div>
+                <h4>Lorem Ipsum</h4>
+                <h5>Lorem Ipsum</h5>
+            </div></div>
+
+            <div class="img-cta"><div class="link"></div></div>
+
+        </button>
+
+        <div style="height: 40px;"></div>
+
+        <h3>Button Link</h3>
+
+        <button class="button-link primary" onclick="console.log('test')">
+            <div class="text">
+                <div class="title">Button Link Primary</div>
+                <div class="subtitle">Lorem Ipsum</div>
+            </div>
+            <div class="img"></div>
+        </button>
+        <button class="button-link secondary" onclick="console.log('test')">
+            <div class="text">
+                <div class="title">Button Link Secondary</div>
+                <div class="subtitle">Lorem Ipsum</div>
+            </div>
+            <div class="img"></div>
+        </button>
+        <button class="button-link secondary" onclick="console.log('test')">
+            <div class="text">
+                <div class="title">Button Link Add</div>
+            </div>
+            <div class="img add"></div>
+        </button>
+
+        <div style="height: 40px;"></div>
+
+
+
+
+
+
+        <h3>Input Boolean</h3>
+
+        <div class="input-boolean">
+
+            <h5>Boolean</h5>
+
+            <div class="checkbox-wrapper-7">
+                <input class="tgl tgl-ios" id="cb2-7" type="checkbox"/>
+                <label class="tgl-btn" for="cb2-7">
+              </div>
+    
+
+        </div>
+
+        <div style="height: 40px;"></div>
+
+
+
+
+
+        <h3>Input</h3>
+        
+        <div class="input">
+            <input id="input-username" placeholder="" autocomplete="username"><label class="input-title"><h5>Benutzername</h5></label>
+        </div>
+
+        <div class="input">
+            <input type="password" placeholder="" autocomplete="current-password"><label class="input-title"><h5>Passwort</h5></label>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+
+
+        <h3>Input Long</h3>
+
+        <div class="input-long" id="I1C">
+            <label class="input-title" id="I1L">
+                <h5>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam?
+                </h5>
+            </label>
+            <textarea class="input-long-textarea" oninput="rescaleTextareas()" id="I1" placeholder="" autocomplete="username"></textarea>
+        </div>
+        <hr class="textarea-fix">
+
+        <div class="input-long">
+            <label class="input-title" id="I2L">
+                <h5>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                </h5>
+            </label>
+            <textarea class="input-long-textarea" oninput="rescaleTextareas()" id="I2" placeholder="" autocomplete="username"></textarea>
+        </div>
+        <hr class="textarea-fix">
+
+        <div class="input-long">
+            <label class="input-title" id="I3L">
+                <div class="label-scale">
+                    <div class="img"></div>
+                    <div class="select">
+                        <select>
+                            <option value="alle" selected disabled hidden>Optionen</option>
+                            <optgroup label="Bewegen">
+                                <option>⬆️&ensp;Hoch</option>
+                                <option>⬇️&ensp;Herunter</option>
+                            </optgroup>
+                            <option>🗑️&ensp;Frage entfernen</option>
+                            <optgroup label="Erweitert">
+                                <option>🆘&ensp;UUID</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <h5>
+                        Frage 1
+                    </h5>
+                </div>
+
+            </label>
+            <textarea class="input-long-textarea" oninput="rescaleTextareas()" id="I3" placeholder="" autocomplete="username"></textarea>
+        </div>
+        <hr class="textarea-fix">
+
+
+        <div style="height: 400px;"></div>
+
+
+        <script>
+
+
+            function rescaleTextareas() { // Durch alle textareas durchlaufen, id herausfinden und dann rescalen
+                var elements = document.getElementsByClassName("input-long-textarea");
+                
+                for (var i = 0; i < elements.length; i++) {
+
+                    var id = elements[i].id[1];
+                    var element = elements[i];
+                    element.style.height =  document.getElementById("I"+id+"L").offsetHeight + 'rem';
+                    element.style.height = (element.scrollHeight) + "rem";
+                    element.style.paddingTop = (document.getElementById("I"+id+"L").offsetHeight + 9)+"rem";
+                    element.style.marginTop = (document.getElementById("I"+id+"L").offsetHeight*-1)+"rem";
+                    document.body.style.height = document.body.offsetHeight + "rem";
+                }
+            }
+        </script>
+
+
+    </div>
+    </div> -->
+
+    <div id="footerbar" class="footerbar">
+        <div id="footerbar-steckbriefe" onclick="navigateSteckbriefe()" class="footer-icon"                       ><div id="footerbar-img-steckbriefe" style="background-image: url('icons/steckbriefe.png');"></div ><h5>Steckbriefe</h5></div>
+        <div id="footerbar-bzs"         onclick="navigateBZS()" class="footer-icon"                       ><div id="footerbar-img-bzs"         style="background-image: url('icons/bzs.png');"></div         ><h5>Beiträge</h5></div>
+        <div id="footerbar-ura"         onclick="navigateURA()" class="footer-icon"                       ><div id="footerbar-img-ura"         style="background-image: url('icons/ura.png');"></div         ><h5>Umfragen</h5></div>
+        <div id="footerbar-profil"      onclick="navigateProfil()" class="footer-icon"                       ><div id="footerbar-img-profil"      style="background-image: url('icons/profil.png');"></div      ><h5>Profil</h5></div>
+        <div id="footerbar-admin"       onclick="navigateAdmin()" class="footer-icon" style="display: none;"><div id="footerbar-img-admin"       style="background-image: url('icons/settings.png');"></div    ><h5>Moderation</h5></div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    initialize();
+
+    function hideNotFavs() {
+        var keinFavElements = document.querySelectorAll('.keinFav');
+    
+        keinFavElements.forEach(function(element) {
+            var currentHeight = window.getComputedStyle(element).height; // Höhe des Elements unter Berücksichtigung aller CSS-Stile
+            var newHeight = parseFloat(currentHeight) + 1; // Neue Höhe: Aktuelle Höhe plus 1 Pixel
+            element.style.height = newHeight + "px";
+        });
+    
+        var keinFavElements = document.querySelectorAll('.keinFav');
+        keinFavElements.forEach(function(element) {
+            element.style.height = "0px";
+            element.style.paddingTop = "0px";
+            element.style.paddingBottom = "0px";
+            element.style.marginTop = "0px";
+            element.style.opacity = 0;
+    
+        });
+    
+    }
+    
+    
+    function showAll() {
+    var keinFavElements = document.querySelectorAll('.keinFav');
+
+    keinFavElements.forEach(function(element) {
+        // Höhe des Inhalts des Elements abrufen und als style.height setzen
+        var contentHeight = element.scrollHeight + 'px';
+        element.style.height = contentHeight;
+        element.style.paddingTop = "9rem";
+        element.style.paddingBottom = "13rem";
+        element.style.marginTop = "12rem";
+        element.style.opacity = 1;
+    });
+}
+    
+    
+    
+    
+    </script>
+    
+
+
+
+</body>
+</html>
