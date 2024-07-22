@@ -19,7 +19,7 @@ Die Abizeitungsapp soll folgenden **Funktionsumfang** bieten:
 
 ## Besonderheiten an dieser Version
 
-1. Das Design dieser Version ist am Design der [Wizz App]([https://apple.com](https://wizzapp.com) orientiert.
+1. Das Design dieser Version ist am Design der [Wizz App](https://wizzapp.com) orientiert.
 2. Passwort verifizierung erfolgt über Vergleichen von SHA512 Hashes aus Benutzername und Passwort in der Datenbank. Für jede Anfrage des benutzeres werden die Anmeldedaten erneut geschickt und mit der Kontoliste überprüft.
 
 ## Verbindung mit der Datenbank
