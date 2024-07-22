@@ -1,0 +1,37 @@
+
+<div style="height: 40px;"></div>
+
+
+<div class="info small">
+    Ändere dein Passwort. Du bist als angemeldet. Solltest du dein neues Passwort vergessen, kann das Organisationteam dir ein neues zuteilen.
+</div>
+
+<div class="info small">
+    Nur Buchstaben (a-z, A-Z), Zahlen (0-9), Sonderzeichen (.,~!§$/()=ß?#+*-_@:<>^°
+</div>
+
+<div style="height: 40px;"></div>
+
+<h3></h3>
+
+<div class="input">
+    <input id="input-username" type="password" placeholder="" autocomplete="current-password"><label class="input-title"><h5>Aktuelles Passwort</h5></label>
+</div>
+
+<div style="height: 20px;"></div>
+
+<div class="input">
+    <input id="input-password" type="password" placeholder="" autocomplete="new-password"><label class="input-title"><h5>Neues Passwort</h5></label>
+</div>
+
+<div class="input">
+    <input id="input-password" type="password" placeholder="" autocomplete="new-password"><label class="input-title"><h5>Neues Passwort Bestätigen</h5></label>
+</div>
+
+<div style="height: 40px;"></div>
+
+<script src="javascript/anmelden.js"></script>
+<button id="change-button" class="primary-button" onclick="">Passwort ändern</button>
+<button id="change-button-load" style="display: none;" class="secondary-button"><div class="load button"></div>Lädt</button>
+<button id="change-button-error" style="display: none;" class="secondary-button">Ungültiges Passwort</button>
+<button id="signin-button" class="secondary-button" onclick="navbarNavigateBack()">Abbrechen</button>

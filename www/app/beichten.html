@@ -1,0 +1,32 @@
+
+<div class="info">
+    <h3>Beichten - Anonym 🔒</h3><br>Was bleibt in der Schule noch geheim? Schick uns deine wildesten Schulmomente - anonym und ohne Filter.
+</div>
+
+<div style="height: 40px;"></div>
+
+<div class="input-long" id="I1C">
+    <label class="input-title" id="I1L">
+        <h5>
+            Autor (optional)
+        </h5>
+    </label>
+    <textarea class="input-long-textarea" oninput="rescaleTextareas()" id="I1" placeholder=""></textarea>
+</div>
+<hr class="textarea-fix">
+
+<div class="input-long" id="I2C">
+    <label class="input-title" id="I2L">
+        <h5>
+            Deine Beichte
+        </h5>
+    </label>
+    <textarea class="input-long-textarea" oninput="rescaleTextareas()" id="I2" placeholder=""></textarea>
+</div>
+<hr class="textarea-fix">
+
+<div style="height: 40px;"></div>
+
+<button id="send-beichte-button" class="primary-button" onclick="beichteAbschicken(getCookie('login'),document.getElementById('I1').value+'☼'+document.getElementById('I2').value)">Beichte Senden</button>
+<button id="send-beichte-button-load" style="display: none;" class="secondary-button"><div class="load button"></div>Lädt</button>
+<button id="send-beichte-button-error" style="display: none;" class="secondary-button">Ungültig</button>
